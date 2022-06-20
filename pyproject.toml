@@ -22,10 +22,10 @@ packages = [ { include = "pytest_reflect_http.py" } ]
 [tool.poetry.dependencies]
 python = "^3.7.2"
 respx = "^0.19.2"
+pytest = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 httpx = "^0.23.0"
-pytest = "^7.1.2"
 pytest-cov = "^3.0.0"
 pytest-icdiff = "^0.5"
 invoke = "^1.7.1"
