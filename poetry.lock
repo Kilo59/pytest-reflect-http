@@ -485,7 +485,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "types-invoke"
-version = "1.6.8"
+version = "1.7.0"
 description = "Typing stubs for invoke"
 category = "dev"
 optional = false
@@ -522,7 +522,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.2"
-content-hash = "f5c24f66c7e1a3b18939c3e4a37daeaae9f4979a96dd24f14750228e14bcba4a"
+content-hash = "c559ecc1462a15f5b53d19157674c558bd64124a984147b3c68e63d5f5895db7"
 
 [metadata.files]
 anyio = [
@@ -822,8 +822,8 @@ typed-ast = [
     {file = "typed_ast-1.5.4.tar.gz", hash = "sha256:39e21ceb7388e4bb37f4c679d72707ed46c2fbf2a5609b8b8ebc4b067d977df2"},
 ]
 types-invoke = [
-    {file = "types-invoke-1.6.8.tar.gz", hash = "sha256:aee549ffcca37e778d332a299ebcd969c5d2a98ad4dce3a547ce1981ec6493a9"},
-    {file = "types_invoke-1.6.8-py3-none-any.whl", hash = "sha256:68f0b0915f7d3708f87029b423bd335401da21234968fb4af7f7d8db4f87a022"},
+    {file = "types-invoke-1.7.0.tar.gz", hash = "sha256:25c4cf565dc9b058d5919052ce2e40c35ac407e0a2acdf8935cd36797511b97b"},
+    {file = "types_invoke-1.7.0-py3-none-any.whl", hash = "sha256:e0166c09bae08205e5ec6f1cc2bf55e3b5734e2c4b590a375daff5c5fbbccdb0"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.2.0-py3-none-any.whl", hash = "sha256:6657594ee297170d19f67d55c05852a874e7eb634f4f753dbd667855e07c1708"},
