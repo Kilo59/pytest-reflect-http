@@ -1,0 +1,54 @@
+# To use this pipeline standalone, uncomment the `trigger`
+# and `name` stanzas. As-is, the pipeline is suitable for
+# importing as a template
+#
+trigger:
+- maiin
+name: $(Date:yyyyMMdd)$(Rev:.r)
+jobs:
+
+- job: 'pytest_reflect_http'
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      Python37:
+        python.version: '3.7'
+      Python38:
+        python.version: '3.8'
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+      architecture: 'x64'
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r pytest-reflect-http/requirements.txt
+      cd pytest-reflect-http
+      pip install -e .
+    displayName: 'Install dependencies'
+  - script: |
+      cd pytest-reflect-http
+      pytest --junitxml=../reports/pytest-reflect-http.xml
+    displayName: 'Run tests'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: 'reports/pytest-reflect-http.xml'
+      testRunTitle: '$(Agent.OS) - $(Build.BuildNumber)[$(Agent.JobName)] - Python $(python.version)'
+    condition: succeededOrFailed()
+
+  - script: |
+      cd pytest-reflect-http
+      python setup.py sdist bdist_wheel
+    displayName: 'Run tests'
+  - task: CopyFiles@2
+    inputs:
+      contents: pytest-reflect-http/dist/**
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: Pytest_Reflect_Http_Wheel
